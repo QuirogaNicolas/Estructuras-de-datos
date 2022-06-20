@@ -1,0 +1,65 @@
+package Tests;
+import lineales.dinamicas.Cola;
+public class TestCola {
+	public static void main(String[] args) {
+		Cola c1=new Cola();
+		System.out.println("esperamos cola vacia------------------->"+c1.toString());
+		c1.poner(1);
+		c1.poner(2);
+		c1.poner(3);
+		c1.poner(4);
+		c1.poner(5);
+		c1.poner(6);
+		c1.poner(7);
+		c1.poner(8);
+		c1.poner(9);
+		Cola c2=c1.clone();
+		System.out.println("esperamos 1,2,3,4,5,6,7,8,9------------>"+c1.toString());
+		System.out.println("esperamos false (true en estaticas)---->"+c1.poner(10));
+		c1.sacar();
+		c1.poner(10);
+		System.out.println("esperamos 2,3,4,5,6,7,8,9,10----------->"+c1.toString()+"<--------(2,3,4,5,6,7,8,9,10,10 en dinamica)");
+		c1.sacar();
+		c1.sacar();
+		System.out.println("");
+		System.out.println("sacamos elementos de la pila original");
+		System.out.println("");
+		System.out.println("esperamos 4,5,6,7,8,9,10--------------->"+c1.toString()+"<--------(4,5,6,7,8,9,10,10 en dinamica)");
+		System.out.println("pila clon------------------------------>"+c2.toString());
+		System.out.println("frente cola original, esperamos 4 ----->"+c1.obtenerFrente());
+		System.out.println("frente de cola clon, esperamos 1------->"+c2.obtenerFrente());
+		boolean exito=c2.obtenerFrente().equals(null);
+		System.out.println("prueba --->"+exito);
+		System.out.println("");
+		System.out.println("vaciamos la cola clon");
+		System.out.println("");
+		c2.vaciar();
+		System.out.println("mostramos cola vacia------------------->"+c2.toString());
+		System.out.println("usamos esVacia() esperamos true-------->"+c2.esVacia());
+		System.out.println("usamos esVacia() esperasos false------->"+c1.esVacia() );
+		System.out.println("");
+		System.out.println("llenamos la pila clon");
+		System.out.println("");
+		c2.poner(1);
+		c2.poner(2);
+		c2.poner(3);
+		c2.poner(4);
+		c2.poner(5);
+		c2.poner(6);
+		c2.poner(7);
+		c2.poner(8);
+		c2.poner(9);
+		System.out.println("esperamos 1,2,3,4,5,6,7,8,9------------>"+c2.toString());
+		System.out.println("///////////////////////////////////////////////////////");
+		
+		c2.vaciar();
+		c2.poner('{');
+		c2.poner('[');
+		c2.poner('(');
+		c2.poner('1');
+		c2.poner(')');
+		c2.poner(']');
+		c2.poner('}');
+		System.out.println("esta bien balanceado-------------------->"+c2.verificarBalanceo(c2));
+	}
+}
